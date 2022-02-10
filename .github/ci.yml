@@ -1,0 +1,12 @@
+name: Testing # ワークフロー名
+on: push # ワークフロー実行タイミング
+
+jobs: # 送信のたびに実行されるジョブ
+  test_project: #　ジョブ名
+    runs-on: ubuntu-latest # コードを実行するGitHubの仮想マシンを指定
+    steps: # このジョブで実行されるアクションの提供
+    - uses: actions/checkout@v2 # 使用するGitHubアクションを指定
+    - name: Run Django unit tests # 実行するアクションの説明
+      run: | # GitHubのサーバで実行したいコマンド
+        pip3 install --user django
+        python3 manage.py test
